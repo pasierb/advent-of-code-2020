@@ -4,6 +4,11 @@ import { argv } from 'process';
 import { render } from 'mustache';
 
 let name = argv[2];
+if (!name) {
+  console.log("Usage: `npm run bootstrap dayXX`")
+
+  throw new Error("Missing day name")
+}
 
 const dayNumber = +name.match(/\d+/)[0];
 const description = `https://adventofcode.com/2020/day/${dayNumber}`;
