@@ -11,8 +11,9 @@ if (!day) {
   day = solutions[solutions.length - 1];
 }
 
+const { default: solution } = require(
+  path.join(solutionsPath, day, 'solution.ts')
+) as { default: () => void };
+
 console.log(`Solution for ${day}`);
-
-const solution = require(path.join(solutionsPath, day, 'solution.ts')) as { default: () => void };
-
-solution.default();
+solution();
