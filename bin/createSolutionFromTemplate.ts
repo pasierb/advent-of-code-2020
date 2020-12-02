@@ -1,11 +1,28 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { argv } from 'process';
+import { render } from 'mustache';
 
-const solutionPath = path.resolve(__dirname, `../solutions/${argv[2]}`);
-const solutionTemplatePath = path.resolve(__dirname, "../template/solution.ts.tmpl");
-const solutionTemplate = fs.readFileSync(solutionTemplatePath);
+let name = argv[2];
+
+const dayNumber = +name.match(/\d+/)[0];
+const description = `https://adventofcode.com/2020/day/${dayNumber}`;
+const view = { name, dayNumber, description };
+
+const templatesPath = path.resolve(__dirname, '../template');
+const solutionPath = path.resolve(__dirname, `../solutions/${name}`);
 
 fs.mkdirSync(solutionPath);
-fs.writeFileSync(path.resolve(solutionPath, 'solution.ts'), solutionTemplate);
+fs.readdirSync(templatesPath)
+  .filter(t => t.endsWith('.tmpl'))
+  .forEach(templatePath => {
+    const destFileName = templatePath.replace(/\.tmpl$/, '');
+    const template = fs.readFileSync(path.join(templatesPath, templatePath), { encoding: 'utf-8' })
+
+    fs.writeFileSync(
+      path.resolve(solutionPath, destFileName),
+      render(template, view)
+    );
+  });
+
 fs.writeFileSync(path.resolve(solutionPath, 'input.txt'), '');

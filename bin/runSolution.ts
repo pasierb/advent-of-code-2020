@@ -1,7 +1,13 @@
 import { argv } from "process";
 import * as path from 'path';
+import * as fs from 'fs';
 
-const day = argv[2];
-const solution: { default: () => void } = require(path.resolve(__dirname, `../solutions/${day}/solution.ts`));
+const solutionsPath = path.resolve(__dirname, '../solutions');
+
+let day = argv[2];
+
+console.log(`Solution for ${day}`);
+
+const solution = require(path.join(solutionsPath, day, 'solution.ts')) as { default: () => void };
 
 solution.default();
