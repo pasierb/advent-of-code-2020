@@ -4,8 +4,8 @@
   "description": "Advent of code 2020 solutions",
   "scripts": {
     "test": "jest solutions/$(ls -C solutions | awk '{print $NF}') --passWithNoTests",
-    "solution": "ts-node bin/runSolution",
-    "bootstrap": "ts-node bin/createSolutionFromTemplate"
+    "solution": "ts-node bin/runSolution.ts",
+    "bootstrap": "ts-node bin/bootstrapDay.ts"
   },
   "author": "Michal Pasierbski <mpasierbski@gmail.com>",
   "license": "ISC",
