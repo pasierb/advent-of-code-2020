@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Advent of code 2020 solutions",
   "scripts": {
-    "test": "jest solutions/$(ls -C solutions | awk '{print $NF}')",
-    "solution": "ts-node bin/runSolution $(ls -C solutions | awk '{print $NF}')",
+    "test": "jest solutions/$(ls -C solutions | awk '{print $NF}') --passWithNoTests",
+    "solution": "ts-node bin/runSolution",
     "bootstrap": "ts-node bin/createSolutionFromTemplate"
   },
   "author": "Michal Pasierbski <mpasierbski@gmail.com>",
