@@ -1,0 +1,19 @@
+import * as fs from 'fs';
+import * as readline from 'readline';
+import * as path from 'path';
+
+/**
+ * https://adventofcode.com/2020/day/
+ */
+
+const inputPath = path.resolve(__dirname, './input.txt');
+
+export default function() {
+  readline.createInterface({
+    input: fs.createReadStream(inputPath )
+  }).on('line', (line) => {
+  }).on('close', () => {
+    console.log(`part 1: `);
+    console.log(`part 2: `);
+  });
+}
