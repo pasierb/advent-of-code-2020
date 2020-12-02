@@ -14,7 +14,7 @@ npm run solution
 npm run solution day02
 ```
 
-### Boostrap another day
+### Bootstrap another day
 
 ```bash
 npm run bootstrap <DAY>
